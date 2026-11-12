@@ -55,7 +55,7 @@ export default {
             throw new Error("Missing Cap token.");
         }
 
-        const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbwXD31EDB3-JiRGnKfC2U_rz3owT8cbNlQWh6pFUqBbe98LneCGWpG_LsuOMr2RUIps/exec';
+        const appsScriptUrl = 'https://script.google.com/macros/s/AKfycby_d5HACHZU8ZrQou7XB9tr9WzwcjeI-cizSBqNvOWHurP_sCMn-1AMHupkeNbgQhk9vQ/exec';
         
         const emailPayload = JSON.stringify({
           to: 'josiah.wilke@huttoisd.org',
