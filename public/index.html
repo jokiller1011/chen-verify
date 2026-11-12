@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vesper Server Verification</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Load the official Cap widget script -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/cap-widget"></script>
+</head>
+<body>
+    <div class="card" id="form-step">
+        <h1>Chen Verification</h1>
+        <p>Please enter your username to verify.</p>
+        <input type="text" id="username" placeholder="Enter your username" required>
+        
+        <div class="captcha-container">
+            <!-- The real Cap widget -->
+            <cap-widget 
+                id="cap-widget"
+                data-cap-api-endpoint="/cap/"
+                onsolve="onCapSolve(event)">
+            </cap-widget>
+        </div>
+
+        <div id="error-box" class="error-box hidden"></div>
+        <button id="submit-btn" disabled>Verify</button>
+    </div>
+
+    <div class="card hidden" id="success-step">
+        <div class="success-text">Your Verified!</div>
+        <p>A server admin will review your verification shortly, then verify you.</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
