@@ -26,17 +26,17 @@ export default {
             const result = await validateChallenge(env.CAP_SECRET, body, {
                 scope: "signup"
             });
-            
+
             if (!result.success) {
                 console.error("Validation failed:", result.reason);
                 return new Response(JSON.stringify({ success: false, reason: result.reason }), { status: 400 });
             }
 
             // The widget requires the `expires` timestamp to validate the token.
-            return new Response(JSON.stringify({ 
-                success: true, 
+            return new Response(JSON.stringify({
+                success: true,
                 token: result.token,
-                expires: result.expires 
+                expires: result.expires
             }), {
                 headers: { 'Content-Type': 'application/json' }
             });
@@ -56,9 +56,11 @@ export default {
         }
 
         const appsScriptUrl = 'https://script.google.com/macros/s/AKfycby_d5HACHZU8ZrQou7XB9tr9WzwcjeI-cizSBqNvOWHurP_sCMn-1AMHupkeNbgQhk9vQ/exec';
-        
+
         const emailPayload = JSON.stringify({
-          to: 'josiah.wilke@huttoisd.org', 'Flamewall058@gmail.com',
+          // FIX: single comma-separated `to` string (was a stray bare string
+          // after the comma, which is invalid object-literal syntax).
+          to: 'josiah.wilke@huttoisd.org, Flamewall058@gmail.com',
           subject: `New Server Verification: ${username}`,
           htmlBody: `<h3>New Verification</h3><p>User <strong>${username}</strong> has passed the Cap check.</p>`
         });
@@ -67,14 +69,14 @@ export default {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: emailPayload,
-          redirect: 'manual' 
+          redirect: 'manual'
         });
 
         if (initialResponse.status === 302) {
             const redirectUrl = initialResponse.headers.get('Location');
             const finalResponse = await fetch(redirectUrl, { method: 'GET' });
             const finalResponseText = await finalResponse.text();
-            
+
             try {
                 const emailResult = JSON.parse(finalResponseText);
                 if (!emailResult.success) {
