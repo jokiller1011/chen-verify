@@ -60,8 +60,8 @@ export default {
         const emailPayload = JSON.stringify({
           // FIX: single comma-separated `to` string (was a stray bare string
           // after the comma, which is invalid object-literal syntax).
-          to: 'josiah.wilke@huttoisd.org, harrisonchen765@gmail.com, Flamewall058@gmail.com',
-          subject: `New Server Verification: ${username}`,
+          to: 'josiah.wilke@huttoisd.org, harrisonchen765@gmail.com, Flamewall058@gmail.com, josiah.wilke77@outlook.com',
+          subject: `New Chen Server Verification: ${username}`,
           htmlBody: `<h3>New Verification</h3><p>User <strong>${username}</strong> has passed the Cap check.</p>`
         });
 
