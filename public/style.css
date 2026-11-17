@@ -1,19 +1,17 @@
 :root {
     --bg-color: #0f1115;
-    --card-bg: rgba(30, 35, 45, 0.75); /* Lowered opacity so GIF shines through better */
+    --card-bg: rgba(30, 35, 45, 0.75);
     --text-main: #e2e8f0;
     --text-muted: #94a3b8;
     --accent: #3b82f6;
 }
 
 body {
-    /* Set the background GIF here */
     background-image: url('chen.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    
     color: var(--text-main);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     display: flex;
@@ -25,7 +23,7 @@ body {
 
 .card {
     background-color: var(--card-bg);
-    backdrop-filter: blur(12px); /* Slightly increased blur */
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 2.5rem;
     border-radius: 12px;
@@ -36,7 +34,7 @@ body {
     border: 1px solid rgba(45, 55, 72, 0.5);
 }
 
-/* New styles for the icon */
+/* Circular logo (as before) */
 .profile-icon {
     width: 100px;
     height: 100px;
@@ -49,6 +47,7 @@ body {
 
 h1 { margin-top: 0; font-size: 1.5rem; }
 p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
 input {
     width: 100%;
     padding: 12px;
@@ -69,17 +68,17 @@ input:focus { outline: none; border-color: var(--accent); }
     min-height: 80px;
 }
 
-/* Cap Widget transparent Theme Custom Properties */
+/* Opaque CAP widget */
 cap-widget {
-    --cap-background: transparent; /* Makes the main widget box transparent */
-    --cap-border-color: rgba(51, 65, 85, 0.5);
+    --cap-background: rgba(15, 17, 21, 0.95);
+    --cap-border-color: #334155;
     --cap-border-radius: 8px;
     --cap-color: #e2e8f0;
-    --cap-checkbox-background: rgba(15, 17, 21, 0.8);
-    --cap-checkbox-border: 1px solid #334155;
+    --cap-checkbox-background: #0f1115;
+    --cap-checkbox-border: 1px solid #475569;
     --cap-checkbox-border-radius: 4px;
     --cap-spinner-color: #3b82f6;
-    --cap-spinner-background-color: transparent;
+    --cap-spinner-background-color: #0f1115;
 }
 
 button#submit-btn {
@@ -120,7 +119,18 @@ button#submit-btn:hover:not(:disabled) { background-color: #2563eb; }
     overflow-y: auto;
 }
 
-/* GitHub Logo Positioning */
+/* Logged-in message */
+#logged-in-message {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#logged-in-username {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* GitHub link */
 .github-link {
     position: fixed;
     bottom: 20px;
@@ -130,7 +140,6 @@ button#submit-btn:hover:not(:disabled) { background-color: #2563eb; }
     transition: opacity 0.2s, transform 0.2s;
     z-index: 1000;
 }
-
 .github-link:hover {
     opacity: 1;
     transform: scale(1.1);
