@@ -1,12 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "server-verify",
+  "name": "chen-verify",
   "main": "src/worker.js",
   "compatibility_date": "2024-11-01",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "directory": "./public",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
   },
   "build": {
     "command": "npm install"
